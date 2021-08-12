@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { View, Text, StyleSheet, FlatList, Button, TouchableOpacity } from 'react-native';
 import { Context } from '../context/BlogContext';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 
 
 const IndexScreen = ( { navigation } ) => {
@@ -31,6 +31,16 @@ const IndexScreen = ( { navigation } ) => {
 
 };
 
+IndexScreen.navigationOptions = ( { navigation }) => {
+    return {
+        headerRight: () => (
+            <TouchableOpacity onPress={() => navigation.navigate('Create')}>
+                    <Feather name="plus" style={styles.header}/>
+            </TouchableOpacity>
+        )
+    }
+}
+
 const styles = StyleSheet.create({
     row: {
         flexDirection: 'row',
@@ -45,6 +55,10 @@ const styles = StyleSheet.create({
     },
     icon: {
         fontSize: 24,
+    },
+    header: {
+        marginRight: 10,
+        fontSize: 30,
     }
 });
 
